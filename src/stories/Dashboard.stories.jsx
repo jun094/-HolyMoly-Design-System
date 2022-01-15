@@ -107,23 +107,6 @@ const ExampleChildrenSidebar = () => {
 		</Nav>
 	);
 };
-const ExampleChildrenDropdown = () => {
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const toggle = () => setDropdownOpen((prevState) => !prevState);
-
-	return (
-		<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-			<DropdownToggle caret size="lg" color="link">
-				goorm#1
-			</DropdownToggle>
-			<DropdownMenu>
-				<DropdownItem>goorm#1</DropdownItem>
-				<DropdownItem>goorm#2</DropdownItem>
-				<DropdownItem>goorm#3</DropdownItem>
-			</DropdownMenu>
-		</ButtonDropdown>
-	);
-};
 
 // *** DashboardFrame Template
 const Template = (args) => {
@@ -133,16 +116,9 @@ const Template = (args) => {
 	return (
 		<div>
 			<DashboardFrame
-				logoSrc={text(
-					'DashboardFramd.logoSrc',
-					'http://statics.goorm.io/logo/edu/goormedu_admin.svg',
-				)}
 				isResizeable={boolean('DashboardFramd.isResizeable', true)}
 			>
 				<DashboardFrame.NavBar>
-					<DashboardFrame.Dropdown>
-						<ExampleChildrenDropdown />
-					</DashboardFrame.Dropdown>
 					<ExampleChildrenNavbar />
 				</DashboardFrame.NavBar>
 				<DashboardFrame.Body>

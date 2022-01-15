@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { debounce } from 'lodash';
 
 import { ReactComponent as ChevronLeftIcon } from '../icons/ChevronLeftIcon.svg';
+import Logo from '../icons/Logo.svg';
 
 import style from './DashboardFrame.module.scss';
 
@@ -32,9 +33,6 @@ const useDashboardContext = () => useContext(DashboardContext);
 // 	<NavBar>NavBar</NavBar>
 // 	<Body>
 // 		<SideNav>
-// 			<Dropdown>
-// 				dropdown item
-// 			</Dropdown>
 // 			SideNav
 // 		</SideNav>
 // 		<Content>
@@ -81,21 +79,11 @@ const NavBar = ({ children, className, innerClassName }) => {
 						/>
 					</span>
 				</span>
-				{logoSrc && (
-					<img
-						className={style.NavBar__logo}
-						src={logoSrc}
-						alt="goorm logo"
-					/>
-				)}
+				<img className={style.NavBar__logo} src={Logo} alt=" logo" />
 				{children}
 			</div>
 		</header>
 	);
-};
-
-const Dropdown = ({ children, className }) => {
-	return <div className={cx(style.Dropdown, className)}>{children}</div>;
 };
 
 const Body = ({ children, className }) => (
@@ -340,15 +328,6 @@ NavBar.defaultProps = {
 	innerClassName: '',
 };
 
-Dropdown.propTypes = {
-	children: PropTypes.node,
-	className: PropTypes.string,
-};
-Dropdown.defaultProps = {
-	children: null,
-	className: '',
-};
-
 Body.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
@@ -409,7 +388,6 @@ DashboardFrame.defaultProps = {
 };
 
 DashboardFrame.NavBar = NavBar;
-DashboardFrame.Dropdown = Dropdown;
 DashboardFrame.Body = Body;
 DashboardFrame.SideNav = SideNav;
 DashboardFrame.Content = Content;
