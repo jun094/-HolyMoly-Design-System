@@ -6,14 +6,6 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import DashboardFrame from '../components/DashboardFrame';
 
 import { Button } from 'reactstrap';
-import { ButtonDropdown } from 'reactstrap';
-import { DropdownToggle } from 'reactstrap';
-import { DropdownMenu } from 'reactstrap';
-import { DropdownItem } from 'reactstrap';
-
-import { Nav } from 'reactstrap';
-import { NavItem } from 'reactstrap';
-import { NavLink } from 'reactstrap';
 
 import { Card } from 'reactstrap';
 import { CardHeader } from 'reactstrap';
@@ -53,8 +45,6 @@ export default {
 const ExampleChildrenNavbar = () => {
 	const style = {
 		Wrapper: {
-			display: 'flex',
-			justifyContent: 'flex-end',
 			width: '100%',
 		},
 		Button: {
@@ -62,66 +52,38 @@ const ExampleChildrenNavbar = () => {
 		},
 	};
 	return (
-		<div style={style.Wrapper}>
-			<Button size="sm" color="link">
+		<div style={style.Wrapper} className="d-flex justify-content-end">
+			<Button size="sm" color="secondary">
 				BUTTON
 			</Button>
-			<Button style={style.Button} size="sm" color="link">
+			<Button style={style.Button} size="sm" color="secondary">
 				BUTTON
 			</Button>
-			<Button style={style.Button} size="sm" color="link">
+			<Button style={style.Button} size="sm" color="secondary">
 				BUTTON
 			</Button>
 		</div>
 	);
 };
 const ExampleChildrenSidebar = () => {
-	// TODO : 아래 bootstrap override하는 css들은 추후, goormstrap을 수정할 예정
 	const style = {
-		Nav: {
-			padding: '12px 0',
-			width: '100%',
-		},
-		NavItem: {
-			margin: 0,
-		},
-		NavLink: {
-			padding: '0.3125rem 1.5rem',
-			borderRadius: 0,
+		Button: {
+			margin: '0.5rem',
 		},
 	};
-	return (
-		<Nav vertical style={style.Nav}>
-			<NavItem style={style.NavItem}>
-				<NavLink style={style.NavLink}>SIDE MENU</NavLink>
-			</NavItem>
-			<NavItem style={style.NavItem}>
-				<NavLink style={style.NavLink}>SIDE MENU</NavLink>
-			</NavItem>
-			<NavItem style={style.NavItem}>
-				<NavLink style={style.NavLink}>SIDE MENU</NavLink>
-			</NavItem>
-			<NavItem style={style.NavItem}>
-				<NavLink style={style.NavLink}>SIDE MENU</NavLink>
-			</NavItem>
-		</Nav>
-	);
-};
-const ExampleChildrenDropdown = () => {
-	const [dropdownOpen, setDropdownOpen] = useState(false);
-	const toggle = () => setDropdownOpen((prevState) => !prevState);
 
 	return (
-		<ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-			<DropdownToggle caret size="lg" color="link">
-				goorm#1
-			</DropdownToggle>
-			<DropdownMenu>
-				<DropdownItem>goorm#1</DropdownItem>
-				<DropdownItem>goorm#2</DropdownItem>
-				<DropdownItem>goorm#3</DropdownItem>
-			</DropdownMenu>
-		</ButtonDropdown>
+		<div className="d-flex flex-column">
+			<Button  style={style.Button}size="sm" color="light">
+				Link 1
+			</Button>
+			<Button  style={style.Button}size="sm" color="light">
+				Link 2
+			</Button>
+			<Button  style={style.Button}size="sm" color="light">
+				Link 3
+			</Button>
+		</div>
 	);
 };
 
@@ -133,16 +95,9 @@ const Template = (args) => {
 	return (
 		<div>
 			<DashboardFrame
-				logoSrc={text(
-					'DashboardFramd.logoSrc',
-					'http://statics.goorm.io/logo/edu/goormedu_admin.svg',
-				)}
 				isResizeable={boolean('DashboardFramd.isResizeable', true)}
 			>
 				<DashboardFrame.NavBar>
-					<DashboardFrame.Dropdown>
-						<ExampleChildrenDropdown />
-					</DashboardFrame.Dropdown>
 					<ExampleChildrenNavbar />
 				</DashboardFrame.NavBar>
 				<DashboardFrame.Body>
@@ -156,7 +111,7 @@ const Template = (args) => {
 						minWidth={text('Content.minWidth', 'unset')}
 					>
 						<DashboardFrame.ContentHeader>
-							<h3>Settings</h3>
+							<h3>Content</h3>
 						</DashboardFrame.ContentHeader>
 						<Card>
 							<CardHeader>Content#1 Header</CardHeader>
