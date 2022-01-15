@@ -1,0 +1,304 @@
+@import '../../constants/color.module.scss';
+
+$dashboard-breakpoint-tablet: 62rem; // 992px
+$dashboard-breakpoint-mobile: 23.4375rem; // 375px
+
+$side-nav-reponsive: calc(100vw - 3.75rem);
+$side-nav-width: 18.75rem; // 300px
+$side-nav-min-width: 15rem; // 240px
+$side-nav-max-width: 25rem; // 400px
+
+$frame-height: 100vh;
+$navbar-height: 3.5rem;
+$navbar-mobile-height: 3rem;
+
+$animation-timing: 0.15s;
+$animation-func: ease-in-out;
+
+.DashboardFrame {
+	height: $frame-height;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding-left: 0;
+
+	/* tablet & mobile */
+	@media (hover: none) and (pointer: coarse),
+		(max-width: $dashboard-breakpoint-tablet) {
+		width: calc(100% + #{$side-nav-width});
+		transition: transform $animation-timing $animation-func;
+		padding-left: $side-nav-width;
+
+		&--open {
+			transform: none;
+		}
+		&--close {
+			transform: translateX(-$side-nav-width);
+		}
+	}
+	@media (max-width: $dashboard-breakpoint-mobile) {
+		width: calc(100vw + #{$side-nav-reponsive});
+		padding-left: $side-nav-reponsive;
+		
+		&--close {
+			transform: translateX(calc(#{$side-nav-reponsive} * -1));
+		}
+	}
+}
+
+.NavBar {
+	display: flex;
+	align-items: center;
+	padding: 0 1.5rem;
+	width: 100%;
+	height: $navbar-height;
+	background-color: $white;
+	border-bottom: 1px solid $gray-100;
+
+	&__inner {
+		width: inherit;
+		display: flex;
+		align-items: center;
+	}
+	&__iconWrapper {
+		display: none;
+	}
+	&__logo {
+		padding-right: 1.5rem;
+		margin-right: 1.5rem;
+		border-right: 1px solid $gray-100;
+	}
+
+	/* tablet & mobile */
+	@media (hover: none) and (pointer: coarse),
+		(max-width: $dashboard-breakpoint-tablet) {
+		height: $navbar-mobile-height;
+		padding: 0 1rem;
+		overflow: hidden;
+		position: fixed;
+		width: 100vw;
+
+		&__inner {
+			display: flex;
+			align-items: center;
+			overflow: hidden;
+		}
+		&__iconWrapper {
+			position: relative;
+			cursor: pointer;
+			display: block;
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+		&__logo {
+			display: none;
+		}
+	}
+}
+
+.Body {
+	overflow: hidden;
+	display: flex;
+	height: calc(100% - #{$navbar-height});
+
+	/* tablet & mobile */
+	@media (hover: none) and (pointer: coarse),
+		(max-width: $dashboard-breakpoint-tablet) {
+		height: calc(100% - #{$navbar-mobile-height});
+	}
+}
+
+.Dropdown {
+	/* tablet & mobile */
+	@media (hover: none) and (pointer: coarse),
+		(max-width: $dashboard-breakpoint-tablet) {
+		display: none;
+	}
+}
+
+.SideNav {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	height: $frame-height;
+	z-index: 1;
+	background: $white;
+
+	&--open {
+		min-width: $side-nav-min-width;
+		max-width: $side-nav-max-width;
+		flex-basis: $side-nav-width;
+		overflow: visible;
+	}
+	&--absolute {
+		width: $side-nav-width;
+		position: absolute;
+		z-index: 1;
+		overflow: visible;
+	}
+	&--close {
+		transition: flex-basis $animation-timing $animation-func;
+		min-width: 0;
+		overflow: hidden;
+	}
+
+	&__inner {
+		width: 100%;
+	}
+	&__divideBorder {
+		border-right: 1px solid $gray-100;
+	}
+	&__resizeBorder {
+		display: flex;
+		justify-content: flex-start;
+		padding: 0 1rem;
+		height: 100%;
+		position: absolute;
+		right: -17px;
+		cursor: ew-resize;
+		opacity: 0;
+		transition: opacity $animation-timing $animation-func;
+	}
+	&__resizeBorder:hover {
+		opacity: 1;
+	}
+	&__resizeBorder--vr {
+		width: 2px;
+		height: 100%;
+		background-color: $blue-700;
+	}
+	&__resizeBorder--absolute {
+		opacity: 1;
+		cursor: auto;
+
+		& > span:first-child {
+			display: none;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		top: 0;
+		right: 4.5px;
+		cursor: pointer;
+		background-color: $blue-700;
+		border-radius: 0.5rem;
+		margin-top: 1rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& > svg {
+			color: $white;
+		}
+	}
+	&__icon--right {
+		transform: rotate(180deg);
+		opacity: 1;
+	}
+
+	/* tablet & mobile */
+	@media (hover: none) and (pointer: coarse),
+		(max-width: $dashboard-breakpoint-tablet) {
+		// TODO : dropdown 위에 올라오면 padding-top 넣어주기
+		// padding-top: 3rem;
+		position: fixed;
+		top: 0;
+		left: 0;
+		transition: min-width, width $animation-timing $animation-func;
+		min-width: 0;
+
+		&--open {
+			width: $side-nav-width;
+		}
+		&--close {
+			width: 0;
+		}
+		&__resizeBorder {
+			display: none;
+		}
+	}
+
+	@media (max-width: $dashboard-breakpoint-mobile) {
+		&--open {
+			width: $side-nav-reponsive;
+		}
+	}
+}
+
+.Content {
+	flex: 1;
+	overflow: auto;
+	padding: 1.5rem 2rem;
+	background-color: $gray-50;
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		margin-right: auto;
+		margin-left: auto;
+
+		& > *:not(:first-child) {
+			margin-bottom: 1.25rem;
+		}
+
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	/* tablet & mobile */
+	@media (hover: none) and (pointer: coarse),
+		(max-width: $dashboard-breakpoint-tablet) {
+		padding: 1.5rem 1rem;
+		margin-top: $navbar-mobile-height;
+	}
+}
+
+.ContentHeader {
+	margin-bottom: 1.5rem;
+
+	h3 {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: $gray-900;
+		margin: 0;
+	}
+}
+
+.HambugerIcon {
+	display: block;
+	width: 1.5rem;
+	height: 1.5rem;
+	position: relative;
+
+	&__line {
+		display: block;
+		width: 1.25rem;
+		height: 0.125rem;
+		border-radius: 9999px;
+		background-color: currentColor;
+		position: absolute;
+		margin-left: auto;
+		margin-right: auto;
+		left: 0.125rem;
+		transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	&__line--top {
+		top: 0.4375rem;
+	}
+	&__line--bottom {
+		bottom: 0.4375rem;
+	}
+	&__line--topActive {
+		top: 0.6875rem;
+		transform: rotate(45deg);
+	}
+	&__line--bottomActive {
+		bottom: 0.6875rem;
+		transform: rotate(-45deg);
+	}
+}
