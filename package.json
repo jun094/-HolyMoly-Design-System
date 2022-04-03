@@ -17,6 +17,7 @@
 		"web-vitals": "^2.1.4"
 	},
 	"devDependencies": {
+		"rollup": "^2.70.1",
 		"@storybook/addon-actions": "^6.4.19",
 		"@storybook/addon-essentials": "^6.4.19",
 		"@storybook/addon-interactions": "^6.4.19",
@@ -29,16 +30,16 @@
 		"@storybook/testing-library": "^0.0.9",
 		"lerna": "^4.0.0",
 		"webpack": "^5.70.0",
-		"rollup": "^2.70.1"
+		"read-pkg-up": "7.0.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build",
+		"build": "lerna run build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"storybook": "start-storybook -p 6006 -s public",
 		"build-storybook": "build-storybook -s public",
-    "build-lerna": "lerna run build",
+		"build-lerna": "lerna run build"
 	},
 	"eslintConfig": {
 		"extends": [
