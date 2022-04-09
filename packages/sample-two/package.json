@@ -1,0 +1,26 @@
+{
+  "name": "sample-two",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "dev-jun <42564107+jun094@users.noreply.github.com>",
+  "homepage": "https://github.com/jun094/devjun-storybook#readme",
+  "license": "ISC",
+  "main": "lib/sample-two.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jun094/devjun-storybook.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/jun094/devjun-storybook/issues"
+  }
+}

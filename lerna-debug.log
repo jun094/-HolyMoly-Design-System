@@ -1,0 +1,12 @@
+0 silly argv {
+0 silly argv   _: [ 'run' ],
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/Users/goorm/Documents/dev/Study/devjun-storybook/node_modules/.bin/lerna',
+0 silly argv   script: 'build'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/goorm/Documents/dev/Study/devjun-storybook
+3 error JSONError: Unexpected end of JSON input while parsing empty string in packages/sample-two/package.json
+3 error     at parseJson (/Users/goorm/Documents/dev/Study/devjun-storybook/node_modules/parse-json/index.js:29:21)
+3 error     at parse (/Users/goorm/Documents/dev/Study/devjun-storybook/node_modules/load-json-file/index.js:15:9)
+3 error     at module.exports (/Users/goorm/Documents/dev/Study/devjun-storybook/node_modules/load-json-file/index.js:18:47)

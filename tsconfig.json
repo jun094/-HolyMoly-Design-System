@@ -15,7 +15,7 @@
 		"emitDeclarationOnly": true
 	},
 	"exclude": [
-		"*.config.js",
+		"*.config.js",// config파일들을 type생성 대상에서 제외
 		"packages/**/node_modules/*.d.ts",
 		"node_modules/*.d.ts",
 		"**/dist/**/*"
