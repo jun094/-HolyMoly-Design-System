@@ -1,10 +1,10 @@
 # HolyMoly 디자인 시스템 생성기.
 
 ### 목표
-- [ ] `lerna` + `rollup` + `typescript` 로 모노레포 만들어보기
-- [ ] Github Package에 배포하기
+- [x] `lerna` + `rollup` + `typescript` 로 모노레포 만들어보기
+- [x] Github Package에 배포하기
 - [ ] UI 애니메이션 패턴화 해보기
-- [ ] FigmaAPI 연동시키기
+- [x] FigmaAPI 연동시키기
 
 
 ### 레퍼런스 사이트
